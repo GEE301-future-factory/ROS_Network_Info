@@ -1,5 +1,7 @@
 # ROS_Network_Info
 
+may also be easiler to use **sudo nano /etc/hosts** to set the ip addresses a name
+
 YAAYY I fianlly managed to do a hello world accross multiple machines and this is the codes needed to do so
 
 M#  = Machine (number)
