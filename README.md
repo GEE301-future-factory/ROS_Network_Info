@@ -76,10 +76,24 @@ ctrl+x
 
 sudo nano /opt/ros/melodic/env.sh
 
+above the line
+
+exec "$@"
+
+add
+
+source /home/gee301/catkin_ws/devel/setup.bash
+export ROS_MASTER_URI=http://uos-OptiPlex-7060:11311/
+export ROS_HOSTNAME=PI_IP_ADDRESS 
 
 
+### THIS IS CONDITIONAL TO THE IP ADDRESSES OF THE PIS WHICH MAY CHANGE AS THE ROTATE EVERY 30 DAYS. IN WHICH CASE THE ENV.SH AND THE LAUNCH FILE NEED TO BE UPDATED. ###
 
 ------------------------------------------------------------------------
+
+
+
+### out of date but kept for interset incase things dont work again ###
 
 may also be easiler to use **sudo nano /etc/hosts** to set the ip addresses a name
 
