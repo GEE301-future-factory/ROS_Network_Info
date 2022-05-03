@@ -63,6 +63,8 @@ From the local machine type
 
 ssh -oHostKeyAlgorithms='ssh-rsa' gee301@IP_ADDRESS_HERE
 
+The list of ip addresses are kept in ROS_Network_Info/system/launch/system_start.launch 
+
 This allows for ros to ssh into the raspberry pi
 
 On the Raspberry Pi
