@@ -3,23 +3,33 @@
     <machine name="Blackbox" address="172.30.58.204" env-loader = "/opt/ros/melodic/env.sh" default = "never" user ="gee301" password ="12345" />
     <machine name="Dispenser" address="172.30.58.123" env-loader = "/opt/ros/melodic/env.sh" default = "never" user ="gee301" password ="12345" />
     <machine name="Glue_Gun" address="172.30.58.111" env-loader = "/opt/ros/melodic/env.sh" default = "never" user ="gee301" password ="12345" />
-    
-    <param name="robot_description" command="cat $(find swiftpro)/urdf/pro_model.xacro" />
-	<param name="use_gui" value= "False" />
-
-    <group ns ="local">
-        <!-- <include file="$(find swiftpro)/launch/pro_control.launch" pass_all_args="true"/> -->
+   
+    <group ns ="Local">
+        
         <node name="Uarm_Control_1" pkg="uarm_moveit" type="Uarm_Mover.py"/>
-        <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
-        <node name="swiftpro_rviz_node" pkg="swiftpro" type="swiftpro_rviz_node"/>
+        <node name="Rover_1_LiDAR_Object_Detector" pkg="system" type="lidar_node_combined.py"/>
+        
     </group>
 
     <group ns = "Rover_1">
+        <param name="robot_description" command="cat $(find swiftpro)/urdf/pro_model.xacro" />
+	    <param name="use_gui" value= "False" />
+
         <node machine="Rover_1" pkg="platform_control" type="Rover1_Arduino_Send.py" name="Rover_1_Motor_Control"/>
         <!-- <node machine="Rover_1" pkg="platform_control" type="Rover1_Position_Set.py" name="Rover_1_Position_Set" output="screen" /> -->
         <node machine="Rover_1" pkg="platform_control" type="RFID_Node.py" name="Rover_1_RFID" />
         <node machine="Rover_1" pkg="platform_control" type="Docking.py" name="Rover_1_Docking"/> 
-        <node machine="Rover_1" name="swiftpro_write_node" pkg="swiftpro" type="swiftpro_write_node"/>
+        <node machine="Rover_1" name="swiftpro_write_node" pkg="swiftpro" type="swiftpro_write_node" />
+        <node machine="Rover_1" name="swiftpro_rviz_node" pkg="swiftpro" type="swiftpro_rviz_node" />
+        <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+        <!-- <node machine="Rover_1" name="rplidarNode" pkg="rplidar_ros"  type="rplidarNode" output="screen">
+        <param name="serial_port"         type="string" value="/dev/ttyUSB0"/>
+        <param name="serial_baudrate"     type="int"    value="115200"/>
+        <param name="frame_id"            type="string" value="laser"/>
+        <param name="inverted"            type="bool"   value="false"/>
+        <param name="angle_compensate"    type="bool"   value="true"/>
+        </node> -->
     </group>
 
     <group ns = "Dispenser">
