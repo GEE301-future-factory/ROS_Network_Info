@@ -1,5 +1,9 @@
 # ROS_Network_Info
 
+# What's needed
+
+- Add Mover6 to launch file
+
 ### HAVENT TESTED IF COMMUNNICATION IS BI-DIRECTIONAL YET. ALL NODES ARE REJESTERD WITH THE MASTER BUT DATA MAY NOT BE EXCHANGED ### 
 This is how I have currently left the setup for the ROS network.
 The whole system will be able to be booted by the comands 
