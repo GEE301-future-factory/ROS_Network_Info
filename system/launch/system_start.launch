@@ -8,6 +8,8 @@
         
         <node name="Uarm_Control_1" pkg="uarm_moveit" type="Uarm_Mover.py"/>
         <node name="Rover_1_LiDAR_Object_Detector" pkg="system" type="lidar_node_combined.py"/>
+        <node name="Action_planner" pkg="system" type="Action_planner.py"/>
+        <node name="Arena" pkg="system" type="Arena.py"/>
         
     </group>
 
@@ -18,18 +20,19 @@
         <node machine="Rover_1" pkg="platform_control" type="Rover1_Arduino_Send.py" name="Rover_1_Motor_Control"/>
         <!-- <node machine="Rover_1" pkg="platform_control" type="Rover1_Position_Set.py" name="Rover_1_Position_Set" output="screen" /> -->
         <node machine="Rover_1" pkg="platform_control" type="RFID_Node.py" name="Rover_1_RFID" />
-        <node machine="Rover_1" pkg="platform_control" type="Docking.py" name="Rover_1_Docking"/> 
+        <node machine="Rover_1" pkg="platform_control" type="Rover1_OverheadCam_Mover.py" name="Rover_OverheadCam_Mover" /> 
+        <node name="Rover_1_Docking" pkg="system" type="Docking.py" />
         <node machine="Rover_1" name="swiftpro_write_node" pkg="swiftpro" type="swiftpro_write_node" />
         <node machine="Rover_1" name="swiftpro_rviz_node" pkg="swiftpro" type="swiftpro_rviz_node" />
         <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
 
-        <!-- <node machine="Rover_1" name="rplidarNode" pkg="rplidar_ros"  type="rplidarNode" output="screen">
+        <node machine="Rover_1" name="rplidarNode" pkg="rplidar_ros"  type="rplidarNode" output="screen">
         <param name="serial_port"         type="string" value="/dev/ttyUSB0"/>
         <param name="serial_baudrate"     type="int"    value="115200"/>
         <param name="frame_id"            type="string" value="laser"/>
         <param name="inverted"            type="bool"   value="false"/>
         <param name="angle_compensate"    type="bool"   value="true"/>
-        </node> -->
+        </node>
     </group>
 
     <group ns = "Dispenser">
